@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { prisma } from "../../../utils/utils";
+import prisma from "../../../utils/prisma";
 import { game1Prizes, game2Prizes, game3Prizes, game4Prizes } from "../../../utils/prizes";
 import dotenv from "dotenv";
 
