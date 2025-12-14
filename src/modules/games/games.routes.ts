@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { app } from "../../utils/utils"
+import { app } from "../../app"
 import getGames from "./controllers/getGames";
 import createGame from "./controllers/createGame";
 import getGameById from "./controllers/getGameById";

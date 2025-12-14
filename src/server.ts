@@ -1,20 +1,7 @@
-import gamesRoutes from "./modules/games/games.routes"
-import getUsers from "./modules/users/controllers/getUsers"
-import userRoutes from "./modules/users/users.routes"
-import fastifyCors from "@fastify/cors"
-import { app } from "./utils/utils"
+import { app } from "./app"
 
-const port = 4444
-app.register(fastifyCors, {
-    origin: "*"
-});
+const port = Number(process.env.PORT || 4444)
 
-// Users Routes
-app.register(userRoutes)
-app.register(gamesRoutes)
-
-app.listen({
-    port: port,
-}, ()=>{
-    console.log(`[+] Servidor iniciado em http://localhost:${port}`)
+app.listen({ port }, () => {
+  console.log(`🔥 API rodando em http://localhost:${port}`)
 })

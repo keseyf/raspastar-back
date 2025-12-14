@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = gamesRoutes;
-const utils_1 = require("../../utils/utils");
+const app_1 = require("../../app");
 const getGames_1 = __importDefault(require("./controllers/getGames"));
 const createGame_1 = __importDefault(require("./controllers/createGame"));
 const getGameById_1 = __importDefault(require("./controllers/getGameById"));
@@ -21,17 +21,17 @@ const gambling_1 = __importDefault(require("./controllers/gambling"));
 function gamesRoutes() {
     return __awaiter(this, void 0, void 0, function* () {
         // GET
-        utils_1.app.get("/api/v2/games/getAll", (req, res) => __awaiter(this, void 0, void 0, function* () {
+        app_1.app.get("/api/v2/games/getAll", (req, res) => __awaiter(this, void 0, void 0, function* () {
             yield (0, getGames_1.default)(req, res);
         }));
-        utils_1.app.get("/api/v2/games/getById/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
+        app_1.app.get("/api/v2/games/getById/:id", (req, res) => __awaiter(this, void 0, void 0, function* () {
             yield (0, getGameById_1.default)(req, res);
         }));
         // POST
-        utils_1.app.post("/api/v2/games/create", (req, res) => __awaiter(this, void 0, void 0, function* () {
+        app_1.app.post("/api/v2/games/create", (req, res) => __awaiter(this, void 0, void 0, function* () {
             yield (0, createGame_1.default)(req, res);
         }));
-        utils_1.app.post("/api/v2/games/gambling", (req, res) => __awaiter(this, void 0, void 0, function* () {
+        app_1.app.post("/api/v2/games/gambling", (req, res) => __awaiter(this, void 0, void 0, function* () {
             yield (0, gambling_1.default)({ req, res });
         }));
     });

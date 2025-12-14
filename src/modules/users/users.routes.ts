@@ -1,4 +1,4 @@
-import { app } from "../../utils/utils"
+import { app } from "../../app"
 import createUser from "./controllers/createUser"
 import getUsers from "./controllers/getUsers"
 import { FastifyReply, FastifyRequest } from "fastify";
