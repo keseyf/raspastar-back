@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = getGameById;
-const utils_1 = require("../../../utils/utils");
+const prisma_1 = __importDefault(require("../../../utils/prisma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 if (!process.env.API_KEY) {
@@ -33,7 +33,7 @@ function getGameById(req, res) {
                     .status(400)
                     .send({ message: "Parâmetro 'id' inválido ou ausente." });
             }
-            const game = yield utils_1.prisma.game.findUnique({
+            const game = yield prisma_1.default.game.findUnique({
                 where: { id: gameId },
             });
             if (!game) {

@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = createGame;
-const utils_1 = require("../../../utils/utils");
+const prisma_1 = __importDefault(require("../../../utils/prisma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 if (!process.env.API_KEY) {
@@ -35,7 +35,7 @@ function createGame(req, res) {
                 case !desc: return res.status(400).send({ error: "Descrição obrigatória" });
                 case !gamePrice: return res.status(400).send({ error: "Preço obrigatório" });
             }
-            const game = yield utils_1.prisma.game.create({
+            const game = yield prisma_1.default.game.create({
                 data: {
                     name, winTax, imageUrl, desc, gamePrice
                 }

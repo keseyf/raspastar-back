@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = getUsers;
-const utils_1 = require("../../../utils/utils");
+const prisma_1 = __importDefault(require("../../../utils/prisma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 if (!process.env.API_KEY) {
@@ -27,7 +27,7 @@ function getUsers(req, res) {
             return;
         }
         try {
-            const users = yield utils_1.prisma.user.findMany();
+            const users = yield prisma_1.default.user.findMany();
             if (!users) {
                 res.send("Nenhum usuario encontrado.");
                 return;

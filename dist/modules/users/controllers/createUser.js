@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = createUser;
-const utils_1 = require("../../../utils/utils");
+const prisma_1 = __importDefault(require("../../../utils/prisma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 dotenv_1.default.config();
@@ -77,7 +77,7 @@ function createUser(req, res) {
                         message: "Nome de usuário inválido: use apenas letras, números, '.' ou '_', sem hífens ou símbolos consecutivos."
                     });
                 }
-                const existingUsername = yield utils_1.prisma.user.findFirst({
+                const existingUsername = yield prisma_1.default.user.findFirst({
                     where: { username }
                 });
                 if (existingUsername) {
@@ -99,18 +99,18 @@ function createUser(req, res) {
                 res.status(400).send({ message: "Senha muito curta: mínimo 6 caracteres." });
                 return;
             }
-            const emailExists = yield utils_1.prisma.user.findUnique({ where: { email } });
+            const emailExists = yield prisma_1.default.user.findUnique({ where: { email } });
             if (emailExists) {
                 res.status(400).send({ message: "Email já cadastrado." });
                 return;
             }
-            const cpfExists = yield utils_1.prisma.user.findUnique({ where: { cpf } });
+            const cpfExists = yield prisma_1.default.user.findUnique({ where: { cpf } });
             if (cpfExists) {
                 res.status(400).send({ message: "CPF já cadastrado." });
                 return;
             }
             const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-            const user = yield utils_1.prisma.user.create({
+            const user = yield prisma_1.default.user.create({
                 data: {
                     name,
                     email,

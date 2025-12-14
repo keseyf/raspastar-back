@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = getGames;
-const utils_1 = require("../../../utils/utils");
+const prisma_1 = __importDefault(require("../../../utils/prisma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 if (!process.env.API_KEY) {
@@ -30,7 +30,7 @@ function getGames(req, res) {
             return;
         }
         try {
-            const games = yield utils_1.prisma.game.findMany();
+            const games = yield prisma_1.default.game.findMany();
             if (games.length === 0) {
                 return res.status(404).send({ message: "Nenhum jogo encontrado." });
             }

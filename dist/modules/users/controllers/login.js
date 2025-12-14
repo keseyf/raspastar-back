@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = login;
 const utils_1 = require("../../../utils/utils");
+const prisma_1 = __importDefault(require("../../../utils/prisma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 dotenv_1.default.config();
@@ -62,7 +63,7 @@ function login(req, res) {
             return res.status(400).send({ message: "Campo de senha não preenchido." });
         }
         try {
-            const user = yield utils_1.prisma.user.findMany({
+            const user = yield prisma_1.default.user.findMany({
                 where: { email }
             });
             if (!user || user.length === 0 || user == undefined) {

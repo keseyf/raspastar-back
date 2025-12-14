@@ -1,7 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = require("./app");
-const port = Number(process.env.PORT || 4444);
-app_1.app.listen({ port }, () => {
-    console.log(`🔥 API rodando em http://localhost:${port}`);
-});
+// import { app } from "./app"
+// const port = Number(process.env.PORT || 4444)
+// app.listen({ port }, () => {
+//   console.log(`🔥 API rodando em http://localhost:${port}`)
+// })
