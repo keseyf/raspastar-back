@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "prisma generate",
+    "build": "prisma generate && tsc",
     "dev": "tsc | node --watch ./dist/server.js"
   },
   "keywords": [],
