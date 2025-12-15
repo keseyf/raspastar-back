@@ -2,7 +2,7 @@
   "version": 2,
   "buildCommand": "npm run build",
   "functions": {
-    "api/index.ts": {
+    "dist/vercel-handler.js": {
       "runtime": "nodejs20.x"
     }
   },
