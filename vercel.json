@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/vercel-handler.js",
-      "use": "@vercel/node"
+  "buildCommand": "npm run build",
+  "functions": {
+    "api/index.ts": {
+      "runtime": "nodejs20.x"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/vercel-handler.js"
+      "dest": "dist/vercel-handler.ts"
     }
   ]
 }
