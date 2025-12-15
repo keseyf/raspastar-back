@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/vercel-handler.ts"
+      "dest": "dist/vercel-handler.js"
     }
   ]
 }
