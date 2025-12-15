@@ -2,14 +2,14 @@
   "version": 2,
   "buildCommand": "npm run build",
   "functions": {
-    "dist/vercel-handler.js": {
+    "api/index.ts": {
       "runtime": "nodejs20.x"
     }
   },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/vercel-handler.js"
+      "dest": "/api/index.ts"
     }
   ]
 }
