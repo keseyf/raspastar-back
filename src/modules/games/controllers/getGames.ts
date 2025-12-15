@@ -1,7 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import prisma from "../../../utils/prisma";
+import {prisma} from "../../../utils/prisma";
 import dotenv from "dotenv";
-import bcrypt from "bcrypt";
 
 dotenv.config();
 

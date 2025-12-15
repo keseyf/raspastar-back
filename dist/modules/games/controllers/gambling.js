@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = gambling;
-const prisma_1 = __importDefault(require("../../../utils/prisma"));
+const prisma_1 = require("../../../utils/prisma");
 const prizes_1 = require("../../../utils/prizes");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -35,10 +35,10 @@ function gambling(_a) {
                 return res.status(400).send({ message: "Game id não definido" });
             if (!userId)
                 return res.status(400).send({ message: "User id não definido" });
-            const game = yield prisma_1.default.game.findUnique({ where: { id: gameId } });
+            const game = yield prisma_1.prisma.game.findUnique({ where: { id: gameId } });
             if (!game)
                 return res.status(400).send({ message: "Jogo não encontrado/disponível" });
-            const user = yield prisma_1.default.user.findUnique({ where: { id: userId } });
+            const user = yield prisma_1.prisma.user.findUnique({ where: { id: userId } });
             if (!user)
                 return res.status(400).send({ message: "Usuário não encontrado" });
             let prizes = [];
@@ -72,7 +72,7 @@ function gambling(_a) {
                 return res.status(400).send({ message: "Saldo insuficiente para jogar" });
             }
             // Desconta o valor do jogo
-            yield prisma_1.default.user.update({
+            yield prisma_1.prisma.user.update({
                 where: { id: userId },
                 data: { balance: { decrement: gamePrice } }
             });
@@ -180,7 +180,7 @@ function gambling(_a) {
                             prizeValue = parseFloat(match[1].replace(",", "."));
                         }
                         if (prizeValue > 0) {
-                            yield prisma_1.default.user.update({
+                            yield prisma_1.prisma.user.update({
                                 where: { id: userId },
                                 data: { balance: { increment: prizeValue } }
                             });

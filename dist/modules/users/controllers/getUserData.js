@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = getUserData;
-const prisma_1 = __importDefault(require("../../../utils/prisma"));
+const prisma_1 = require("../../../utils/prisma");
 const dotenv_1 = __importDefault(require("dotenv"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 dotenv_1.default.config();
@@ -45,7 +45,7 @@ function getUserData(req, res) {
                 return res.status(401).send({ message: "Token inválido." });
             }
             const userId = decoded.id;
-            const usrdata = yield prisma_1.default.user.findFirst({ where: { id: userId } });
+            const usrdata = yield prisma_1.prisma.user.findFirst({ where: { id: userId } });
             if (!usrdata) {
                 return res.status(404).send({ message: "Usuário não encontrado." });
             }
