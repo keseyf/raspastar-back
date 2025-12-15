@@ -2,12 +2,12 @@
   "name": "back",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "build": "prisma generate && npm install -g typescript && npm install -D typescript && tsc",
-    "postinstall": "prisma generate",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
-  },
+  "build": "tsc",
+  "postinstall": "prisma generate",
+  "vercel-build": "tsc | prisma migrate deploy"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
