@@ -44,7 +44,7 @@ export default async function getUserData(
 
     const userId = (decoded as JwtPayload).id as string;
 
-    const usrdata = await prisma.user.findFirst({ where: { id: userId } });
+    const usrdata = await prisma.user.findFirst({ where: { id: userId }, include: { orders: true}});
 
     if (!usrdata) {
       return res.status(404).send({ message: "Usuário não encontrado." });

@@ -91,6 +91,7 @@ export default async function createUser(req: FastifyRequest, res: FastifyReply)
       return res.status(400).send({ message: "CPF inválido: deve estar no formato 000.000.000-00 ou conter 11 dígitos." });
     }
 
+    
     // Remove pontos e traços antes de usar
     const cleanCpf = cpf.replace(/[^\d]/g, '');
 

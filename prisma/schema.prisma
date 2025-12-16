@@ -28,7 +28,8 @@ model User {
 }
 
 model Orders {
-  id        String   @id @default(uuid()) 
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
   typeOrder String
   amount String
   desc      String

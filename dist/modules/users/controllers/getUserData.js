@@ -45,7 +45,7 @@ function getUserData(req, res) {
                 return res.status(401).send({ message: "Token inválido." });
             }
             const userId = decoded.id;
-            const usrdata = yield prisma_1.prisma.user.findFirst({ where: { id: userId } });
+            const usrdata = yield prisma_1.prisma.user.findFirst({ where: { id: userId }, include: { orders: true } });
             if (!usrdata) {
                 return res.status(404).send({ message: "Usuário não encontrado." });
             }

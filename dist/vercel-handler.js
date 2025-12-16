@@ -10,10 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = handler;
-const app_1 = require("./app");
+const app_1 = require("./app"); // se o server.ts compilou para dist/server.js
 function handler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield app_1.app.ready();
+        yield app_1.app.ready(); // garante que o Fastify esteja pronto
         app_1.app.server.emit("request", req, res);
     });
 }
