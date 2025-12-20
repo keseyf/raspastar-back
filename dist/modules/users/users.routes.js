@@ -18,6 +18,7 @@ const createUser_1 = __importDefault(require("./controllers/createUser"));
 const getUsers_1 = __importDefault(require("./controllers/getUsers"));
 const login_1 = __importDefault(require("./controllers/login"));
 const getUserData_1 = __importDefault(require("./controllers/getUserData"));
+const recharge_1 = __importDefault(require("./controllers/recharge"));
 function userRoutes() {
     return __awaiter(this, void 0, void 0, function* () {
         // GET
@@ -33,6 +34,9 @@ function userRoutes() {
         }));
         app_1.app.post("/api/v2/users/login", (req, res) => __awaiter(this, void 0, void 0, function* () {
             yield (0, login_1.default)(req, res);
+        }));
+        app_1.app.post("/api/v2/users/recharge/", (req, res) => __awaiter(this, void 0, void 0, function* () {
+            yield (0, recharge_1.default)(req, res);
         }));
     });
 }

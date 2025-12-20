@@ -33,6 +33,8 @@ model Orders {
   typeOrder String
   amount String
   desc      String
+  status String @default("pending")
+  pixCopyPasteKey String 
   userId    String
   user      User     @relation(fields: [userId], references: [id])
 }

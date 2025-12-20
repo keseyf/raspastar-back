@@ -4,6 +4,7 @@ import getUsers from "./controllers/getUsers"
 import { FastifyReply, FastifyRequest } from "fastify";
 import login from "./controllers/login";
 import getUserData from "./controllers/getUserData";
+import Recharge from "./controllers/recharge";
 
 
 export default async function userRoutes() {
@@ -23,5 +24,9 @@ export default async function userRoutes() {
 
     app.post("/api/v2/users/login", async (req: FastifyRequest,res:FastifyReply)=>{
         await login(req,res)
+    })
+
+    app.post("/api/v2/users/recharge/", async (req: FastifyRequest,res:FastifyReply)=>{
+        await Recharge(req,res)
     })
 }
